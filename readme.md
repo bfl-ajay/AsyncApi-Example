@@ -212,8 +212,8 @@ Tokens are valid for **7 days** and are stored along with **client IP & user-age
 ### 1. Clone Repo
 
 ```bash
-git clone https://github.com/your-org/secure-ws-api.git
-cd secure-ws-api
+git clone https://github.com/bfl-ajay/AsyncApi-Example.git
+cd AsyncApi-Example
 ```
 
 ### 2. Install Dependencies
@@ -280,7 +280,7 @@ Then visit: `http://localhost:3000`
 
 ## 👨‍💻 Maintainers
 
-- [Ajay Singh](https://github.com/your-username)
+- [Ajay Singh](https://github.com/ajay-singh33_bflghec)
 - Bajaj Finserv
 
 ---
