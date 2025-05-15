@@ -1,3 +1,8 @@
+<!-- 
+This README file provides an overview of implementing a secure WebSocket API using the AsyncAPI specification. 
+It includes details on how to define, document, and secure WebSocket-based APIs effectively. 
+Refer to this file for setup instructions, examples, and best practices for using AsyncAPI with WebSocket protocols.
+-->
 # 🔐 Secure WebSocket API Using AsyncApi
 
 This is a **secure, production-ready WebSocket-based API** built using **Node.js**, **MySQL**, and **AsyncAPI** specification. It supports **user registration, login with token generation**, and **authenticated CRUD operations**, protected using **API tokens with expiry**.
@@ -277,6 +282,65 @@ Then visit: `http://localhost:3000`
 - SSL (WSS) is used to encrypt communication
 
 ---
+
+# Updates
+
+## 🛠️ Environment Variables & Configuration
+
+The application now **validates required environment variables** before starting. If any are missing, the server will not start and will display an error message. This ensures reliability and prevents misconfiguration.
+
+### Required `.env` Variables
+
+```env
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASS=your_password
+DB_NAME=userdb
+API_PORT=3000
+```
+
+- `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASS`, `DB_NAME`: MySQL connection settings.
+- `API_PORT`: The port your WebSocket API will listen on (used for both local and Docker Compose).
+
+> **Note:** The server will throw an error if any of these variables are missing.
+
+---
+
+## 🐳 Docker & Docker Compose
+
+- The `Dockerfile` and `docker-compose.yml` now use `API_PORT` for exposing the API server port.
+- The database service uses `DB_PORT` for MySQL.
+- All environment variables are loaded from `.env` for both services.
+
+### Example: Running with Docker Compose
+
+```bash
+docker-compose up --build
+```
+
+---
+
+## ⚙️ Running Locally
+
+1. **Copy `.env.example` to `.env` and fill in your values.**
+2. **Start the server:**
+   ```bash
+   node server.js
+   ```
+   If any required environment variable is missing, the server will exit with an error.
+
+---
+
+## 🔒 Security & Reliability
+
+- **Environment variable validation** prevents accidental misconfiguration.
+- **Consistent variable names** (`API_PORT` instead of `PORT`) across code, Docker, and documentation.
+
+---
+
+**Be sure to update your `.env` file and use `API_PORT` for the server port.**  
+If you previously used `PORT`, rename it to `API_PORT` in your `.env`.
 
 ## 👨‍💻 Maintainers
 

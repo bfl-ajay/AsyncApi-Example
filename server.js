@@ -8,7 +8,7 @@ const { createUser, getUser, updateUser, deleteUser } = require('./handlers/user
 const { registerUser, generateToken, verifyToken } = require('./handlers/authHandler');
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.API_PORT || 3000;
 
 const server = https.createServer({
   cert: fs.readFileSync(path.join(__dirname, './cert/server.crt')),
