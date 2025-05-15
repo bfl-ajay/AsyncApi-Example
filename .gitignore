@@ -1,0 +1,35 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+
+# SSL Certificates
+cert/*.key
+cert/*.crt
+
+# Build output
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# AsyncAPI docs output
+asyncapi-docs/
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Temp files
+*.tmp
+*.bak

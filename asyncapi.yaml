@@ -1,0 +1,122 @@
+asyncapi: '2.6.0'
+info:
+  title: Secure User CRUD WebSocket API
+  version: '1.1.0'
+  description: |
+    Secure WebSocket API for User Management using token authentication. 
+    All user-based operations require a valid `apiToken`.
+
+servers:
+  secureWebSocket:
+    url: wss://localhost:3000
+    protocol: wss
+    description: Secure WebSocket Server (TLS-enabled)
+
+channels:
+  auth/register:
+    publish:
+      summary: Register a new user
+      message:
+        name: RegisterUser
+        payload:
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+          required:
+            - name
+            - email
+            - password
+
+  auth/generateToken:
+    publish:
+      summary: Authenticate and get API token
+      message:
+        name: GenerateToken
+        payload:
+          type: object
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+          required:
+            - email
+            - password
+
+  user/create:
+    publish:
+      summary: Create a new user
+      message:
+        name: CreateUser
+        payload:
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+            apiToken:
+              type: string
+          required:
+            - name
+            - email
+            - apiToken
+
+  user/read:
+    publish:
+      summary: Get user details by ID
+      message:
+        name: ReadUser
+        payload:
+          type: object
+          properties:
+            id:
+              type: integer
+            apiToken:
+              type: string
+          required:
+            - id
+            - apiToken
+
+  user/update:
+    publish:
+      summary: Update user information
+      message:
+        name: UpdateUser
+        payload:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            email:
+              type: string
+            apiToken:
+              type: string
+          required:
+            - id
+            - name
+            - email
+            - apiToken
+
+  user/delete:
+    publish:
+      summary: Delete a user
+      message:
+        name: DeleteUser
+        payload:
+          type: object
+          properties:
+            id:
+              type: integer
+            apiToken:
+              type: string
+          required:
+            - id
+            - apiToken
